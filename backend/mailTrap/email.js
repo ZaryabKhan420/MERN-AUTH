@@ -45,12 +45,13 @@ export const sendWelcomeEmail = async (email, name) => {
 
 export const sendPasswordResetEmail = async (email, resetUrl) => {
   const recipient = [{ email }];
+  console.log(resetUrl);
   try {
     const response = mailTrapClient.send({
       from: mailTrapSender,
       to: recipient,
       subject: "Password Reset Request",
-      html: PASSWORD_RESET_REQUEST_TEMPLATE.replace("{resetUrl}", resetUrl),
+      html: PASSWORD_RESET_REQUEST_TEMPLATE.replace("{resetURL}", resetUrl),
       category: "Password Reset",
     });
     console.log("Reset Email Request Sent Successfully");
